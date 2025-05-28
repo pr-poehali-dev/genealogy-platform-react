@@ -1,92 +1,64 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Icon from "@/components/ui/icon";
+import { GitBranch, Database, Users, FileCog, Camera, Share2 } from 'lucide-react';
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: "TreePine",
-      title: "Конструктор древ",
-      description:
-        "Интуитивный редактор с поддержкой фото, видео и документов. Создавайте красивые визуальные родословные с анимированными переходами",
+      icon: <GitBranch className="w-10 h-10 text-primary" />,
+      title: "Интерактивное древо",
+      description: "Создавайте наглядное семейное древо с удобным редактированием связей и перемещением узлов."
     },
     {
-      icon: "FolderOpen",
+      icon: <Database className="w-10 h-10 text-primary" />,
       title: "Цифровой архив",
-      description:
-        "Облачное хранилище с шифрованием данных. Сохраняйте семейные фотографии, документы и видеозаписи навсегда",
+      description: "Доступ к оцифрованным историческим документам для глубокого исследования своих корней."
     },
     {
-      icon: "Users",
+      icon: <Users className="w-10 h-10 text-primary" />,
       title: "Совместная работа",
-      description:
-        "Приглашайте родственников для совместного редактирования древа в режиме реального времени с чатом и комментариями",
+      description: "Приглашайте родственников для совместного заполнения и редактирования семейного древа."
     },
     {
-      icon: "Shield",
-      title: "Приватность",
-      description:
-        "Настраиваемые уровни доступа: публичное, приватное или по ссылке. Ваши данные под надежной защитой",
+      icon: <FileCog className="w-10 h-10 text-primary" />,
+      title: "Импорт/Экспорт",
+      description: "Загружайте данные из популярных генеалогических форматов или экспортируйте свое древо."
     },
     {
-      icon: "Trophy",
-      title: "Геймификация",
-      description:
-        "Изучайте генеалогию через квесты и достижения. Получайте награды за исследование семейной истории",
+      icon: <Camera className="w-10 h-10 text-primary" />,
+      title: "Медиа-галерея",
+      description: "Храните и систематизируйте фотографии, документы и памятные записи для каждого члена семьи."
     },
     {
-      icon: "Download",
-      title: "GEDCOM экспорт",
-      description:
-        "Экспортируйте данные в стандартном формате GEDCOM для совместимости с другими генеалогическими программами",
+      icon: <Share2 className="w-10 h-10 text-primary" />,
+      title: "Гибкие настройки доступа",
+      description: "Выбирайте, кто может просматривать или редактировать ваше древо – от полной приватности до публичного доступа."
     },
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Всё для вашей генеалогии
-          </h2>
-          <p className="font-opensans text-xl text-muted-foreground max-w-2xl mx-auto">
-            Современные инструменты для сохранения и изучения семейной истории в
-            одной платформе
+    <section id="features" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Преимущества «Семейные корни»</h2>
+          <p className="text-lg text-muted-foreground">
+            Наш сервис предлагает все необходимые инструменты для создания подробной 
+            семейной истории и сохранения важных воспоминаний о ваших предках.
           </p>
         </div>
-
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card
+            <div 
               key={index}
-              className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border/50 animate-slide-up bg-card/50 backdrop-blur-sm"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="p-6 rounded-lg bg-background border border-border hover:border-primary/50 transition-colors duration-300"
             >
-              <CardHeader className="text-center">
-                <div className="mb-4 flex justify-center">
-                  <div className="p-3 bg-primary/10 rounded-full">
-                    <Icon
-                      name={feature.icon}
-                      size={32}
-                      className="text-tree-bark"
-                    />
-                  </div>
+              <div className="mb-4 group">
+                <div className="p-2 inline-block rounded-lg bg-primary/10 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
                 </div>
-                <CardTitle className="font-playfair text-xl font-semibold text-primary">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="font-opensans text-center text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              </div>
+              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>

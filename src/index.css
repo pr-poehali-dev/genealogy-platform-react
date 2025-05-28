@@ -1,88 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap");
-
 @layer base {
   :root {
-    --background: 245 241 230;
-    --foreground: 46 94 78;
+    --background: 43 36% 93%; /* бежевый фон */
+    --foreground: 147 25% 24%; /* темно-зеленый текст */
 
-    --card: 255 255 255;
-    --card-foreground: 46 94 78;
+    --card: 43 36% 96%;
+    --card-foreground: 147 25% 24%;
 
-    --popover: 255 255 255;
-    --popover-foreground: 46 94 78;
+    --popover: 43 36% 96%;
+    --popover-foreground: 147 25% 24%;
 
-    --primary: 46 94 78;
-    --primary-foreground: 245 241 230;
+    --primary: 14 43% 57%; /* терракотовый */
+    --primary-foreground: 43 36% 96%;
 
-    --secondary: 245 241 230;
-    --secondary-foreground: 46 94 78;
+    --secondary: 147 25% 24%; /* темно-зеленый */
+    --secondary-foreground: 43 36% 96%; 
 
-    --muted: 235 231 220;
-    --muted-foreground: 139 69 19;
+    --muted: 43 20% 90%;
+    --muted-foreground: 147 10% 40%;
 
-    --accent: 196 30 58;
-    --accent-foreground: 245 241 230;
+    --accent: 43 67% 52%; /* золотой */
+    --accent-foreground: 147 25% 24%;
 
-    --destructive: 196 30 58;
-    --destructive-foreground: 245 241 230;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 43 36% 96%;
 
-    --border: 220 216 205;
-    --input: 220 216 205;
-    --ring: 46 94 78;
+    --border: 43 20% 80%;
+    --input: 43 20% 80%;
+    --ring: 14 43% 57%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 245 241 230;
-    --sidebar-foreground: 46 94 78;
-    --sidebar-primary: 46 94 78;
-    --sidebar-primary-foreground: 245 241 230;
-    --sidebar-accent: 235 231 220;
-    --sidebar-accent-foreground: 46 94 78;
-    --sidebar-border: 220 216 205;
-    --sidebar-ring: 46 94 78;
   }
 
   .dark {
-    --background: 46 94 78;
-    --foreground: 245 241 230;
+    --background: 147 25% 10%;
+    --foreground: 43 36% 96%;
 
-    --card: 56 104 88;
-    --card-foreground: 245 241 230;
+    --card: 147 25% 15%;
+    --card-foreground: 43 36% 96%;
 
-    --popover: 56 104 88;
-    --popover-foreground: 245 241 230;
+    --popover: 147 25% 15%;
+    --popover-foreground: 43 36% 96%;
 
-    --primary: 245 241 230;
-    --primary-foreground: 46 94 78;
+    --primary: 14 43% 57%; /* терракотовый */
+    --primary-foreground: 43 36% 96%;
 
-    --secondary: 56 104 88;
-    --secondary-foreground: 245 241 230;
+    --secondary: 43 36% 96%;
+    --secondary-foreground: 147 25% 15%;
 
-    --muted: 66 114 98;
-    --muted-foreground: 180 180 180;
+    --muted: 147 15% 20%;
+    --muted-foreground: 43 20% 80%;
 
-    --accent: 196 30 58;
-    --accent-foreground: 245 241 230;
+    --accent: 43 67% 52%; /* золотой */
+    --accent-foreground: 147 25% 15%;
 
-    --destructive: 196 30 58;
-    --destructive-foreground: 245 241 230;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 43 36% 96%;
 
-    --border: 66 114 98;
-    --input: 66 114 98;
-    --ring: 245 241 230;
-
-    --sidebar-background: 46 94 78;
-    --sidebar-foreground: 245 241 230;
-    --sidebar-primary: 245 241 230;
-    --sidebar-primary-foreground: 46 94 78;
-    --sidebar-accent: 56 104 88;
-    --sidebar-accent-foreground: 245 241 230;
-    --sidebar-border: 66 114 98;
-    --sidebar-ring: 245 241 230;
+    --border: 147 15% 30%;
+    --input: 147 15% 30%;
+    --ring: 14 43% 57%;
   }
 }
 
@@ -92,48 +74,28 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: "Open Sans", sans-serif;
+    @apply bg-background text-foreground font-body;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Playfair Display", serif;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 }
 
-@layer utilities {
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+@layer components {
+  .hero-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-colors;
+  }
+  
+  .hero-button-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-md font-medium transition-colors;
   }
 
-  .animate-slide-up {
-    animation: slide-up 0.8s ease-out forwards;
+  .tree-node {
+    @apply rounded-full border-2 border-secondary bg-white p-2 cursor-pointer transition-all;
   }
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .tree-line {
+    @apply bg-secondary/60 absolute;
   }
 }
