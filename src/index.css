@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap");
 
 @layer base {
   :root {
@@ -22,7 +22,7 @@
     --secondary-foreground: 46 94 78;
 
     --muted: 235 231 220;
-    --muted-foreground: 120 120 120;
+    --muted-foreground: 139 69 19;
 
     --accent: 196 30 58;
     --accent-foreground: 245 241 230;
@@ -102,7 +102,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Playfair Display", serif;
   }
 }
 

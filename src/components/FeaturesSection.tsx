@@ -9,40 +9,40 @@ import {
 const FeaturesSection = () => {
   const features = [
     {
-      icon: "🌳",
-      title: "Интерактивные древа",
+      icon: "TreePine",
+      title: "Конструктор древ",
       description:
-        "Создавайте красивые визуальные генеалогические древа с drag-and-drop редактором и анимированными переходами",
+        "Интуитивный редактор с поддержкой фото, видео и документов. Создавайте красивые визуальные родословные с анимированными переходами",
     },
     {
-      icon: "📱",
-      title: "Мобильная версия",
+      icon: "FolderOpen",
+      title: "Цифровой архив",
       description:
-        "Работайте с семейной историей в любом месте благодаря полностью адаптивному дизайну",
+        "Облачное хранилище с шифрованием данных. Сохраняйте семейные фотографии, документы и видеозаписи навсегда",
     },
     {
-      icon: "🤝",
-      title: "Совместное редактирование",
+      icon: "Users",
+      title: "Совместная работа",
       description:
-        "Приглашайте родственников для совместной работы над древом в режиме реального времени",
+        "Приглашайте родственников для совместного редактирования древа в режиме реального времени с чатом и комментариями",
     },
     {
-      icon: "💾",
+      icon: "Shield",
+      title: "Приватность",
+      description:
+        "Настраиваемые уровни доступа: публичное, приватное или по ссылке. Ваши данные под надежной защитой",
+    },
+    {
+      icon: "Trophy",
+      title: "Геймификация",
+      description:
+        "Изучайте генеалогию через квесты и достижения. Получайте награды за исследование семейной истории",
+    },
+    {
+      icon: "Download",
       title: "GEDCOM экспорт",
       description:
-        "Экспортируйте данные в стандартном формате GEDCOM для совместимости с другими программами",
-    },
-    {
-      icon: "📸",
-      title: "Медиаархив",
-      description:
-        "Сохраняйте фотографии, документы и аудиозаписи, связанные с каждым членом семьи",
-    },
-    {
-      icon: "🎓",
-      title: "Обучающие квесты",
-      description:
-        "Изучайте генеалогию через интерактивные задания и образовательные материалы",
+        "Экспортируйте данные в стандартном формате GEDCOM для совместимости с другими генеалогическими программами",
     },
   ];
 
@@ -50,11 +50,12 @@ const FeaturesSection = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             Всё для вашей генеалогии
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Современные инструменты для сохранения и изучения семейной истории
+          <p className="font-opensans text-xl text-muted-foreground max-w-2xl mx-auto">
+            Современные инструменты для сохранения и изучения семейной истории в
+            одной платформе
           </p>
         </div>
 
@@ -62,17 +63,25 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border/50 animate-slide-up"
+              className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border/50 animate-slide-up bg-card/50 backdrop-blur-sm"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader className="text-center">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl font-semibold text-primary">
+                <div className="mb-4 flex justify-center">
+                  <div className="p-3 bg-primary/10 rounded-full">
+                    <Icon
+                      name={feature.icon}
+                      size={32}
+                      className="text-tree-bark"
+                    />
+                  </div>
+                </div>
+                <CardTitle className="font-playfair text-xl font-semibold text-primary">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-center text-muted-foreground leading-relaxed">
+                <CardDescription className="font-opensans text-center text-muted-foreground leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>
