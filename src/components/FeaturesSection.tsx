@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Icon from "@/components/ui/icon";
 
 const FeaturesSection = () => {
   const features = [
