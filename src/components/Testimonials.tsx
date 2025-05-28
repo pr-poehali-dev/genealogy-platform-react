@@ -1,10 +1,15 @@
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const TestimonialCard = ({ text, author, role, image }: { 
-  text: string; 
-  author: string; 
-  role: string; 
+const TestimonialCard = ({
+  text,
+  author,
+  role,
+  image,
+}: {
+  text: string;
+  author: string;
+  role: string;
   image?: string;
 }) => {
   return (
@@ -15,7 +20,7 @@ const TestimonialCard = ({ text, author, role, image }: {
       <CardFooter>
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src={image || '/placeholder.svg'} alt={author} />
+            <AvatarImage src={image || "/placeholder.svg"} alt={author} />
             <AvatarFallback>{author.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
@@ -40,22 +45,22 @@ const Testimonials = () => {
             Что говорят люди, которые уже сохраняют свою семейную историю
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <TestimonialCard 
+          <TestimonialCard
             text="Благодаря этому сервису я смогла восстановить древо до шестого колена и найти родственников, о которых даже не знала. Интерфейс очень понятный, даже для не очень опытных пользователей."
             author="Елена Смирнова"
             role="Учитель истории"
           />
-          <TestimonialCard 
-            text="Мы с братьями живем в разных городах, но теперь можем вместе работать над семейным архивом. Очень удобно, что можно добавлять фотографии и документы к каждому профилю."
-            author="Алексей Петров"
+          <TestimonialCard
+            text="Очень удобный интерфейс! За месяц работы удалось создать древо на 4 поколения назад. Особенно понравилась возможность добавлять фотографии и документы к каждой персоне."
+            author="Михаил Петров"
             role="Инженер"
           />
-          <TestimonialCard 
-            text="Моя бабушка была в восторге, когда я показал ей, как выглядит наше семейное древо. Теперь мы вместе восстанавливаем истории наших предков, и это отличный способ сблизиться."
-            author="Дмитрий Козлов"
-            role="Программист"
+          <TestimonialCard
+            text="Отличный инструмент для семейного исследования. Функция поиска в архивах помогла найти информацию о прадедушке, которую мы искали много лет. Рекомендую всем, кто интересуется генеалогией."
+            author="Анна Козлова"
+            role="Историк"
           />
         </div>
       </div>
