@@ -1,15 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { SheetTrigger, Sheet, SheetContent } from "@/components/ui/sheet";
-import {
-  Menu,
-  Home,
-  Users,
-  BookOpen,
-  Archive,
-  HelpCircle,
-  UserCircle,
-} from "lucide-react";
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 
@@ -29,13 +20,13 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Навигационные ссылки для повторного использования
+  // Обновленные навигационные ссылки с современными иконками
   const navLinks = [
     { to: "/", text: "Главная", icon: "Home" },
-    { to: "/create-tree", text: "Создать древо", icon: "Users" },
-    { to: "/education", text: "Обучение", icon: "BookOpen" },
-    { to: "/archives", text: "Архивы", icon: "Archive" },
-    { to: "/support", text: "Поддержка", icon: "HelpCircle" },
+    { to: "/create", text: "Создать древо", icon: "GitBranch" },
+    { to: "/templates", text: "Шаблоны", icon: "Layers3" },
+    { to: "/gallery", text: "Галерея", icon: "Images" },
+    { to: "/help", text: "Помощь", icon: "CircleHelp" },
   ];
 
   return (
@@ -48,86 +39,66 @@ const Header = () => {
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <NavLink
-            to="/"
-            className="font-bold text-2xl text-primary transition-colors hover:text-primary/80"
-          >
-            FamilyTree
-          </NavLink>
-        </div>
+        {/* Логотип */}
+        <NavLink
+          to="/"
+          className="flex items-center space-x-2 text-xl font-bold hover:text-primary transition-colors"
+        >
+          <Icon name="TreePine" size={24} className="text-primary" />
+          <span>FamilyTree</span>
+        </NavLink>
 
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Десктопная навигация */}
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary ${
-                  isActive ? "text-primary" : "text-muted-foreground"
+                `flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors
+                ${
+                  isActive
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 }`
               }
+              onClick={closeMenu}
             >
-              <Icon name={link.icon as any} size={16} />
-              {link.text}
+              <Icon name={link.icon} size={16} />
+              <span>{link.text}</span>
             </NavLink>
           ))}
-          <Button asChild size="sm">
-            <NavLink to="/profile">
-              <Icon name="UserCircle" size={16} className="mr-2" />
-              Войти
-            </NavLink>
-          </Button>
         </nav>
 
-        {/* Mobile menu trigger */}
+        {/* Мобильное меню */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon">
-              <Menu className="h-5 w-5" />
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Icon name="Menu" size={20} />
               <span className="sr-only">Открыть меню</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="flex flex-col gap-4 mt-8">
+          <SheetContent side="right" className="w-72">
+            <div className="flex flex-col space-y-4 mt-6">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
-                  onClick={closeMenu}
                   className={({ isActive }) =>
-                    `text-base font-medium transition-colors hover:text-primary flex items-center gap-2 p-2 rounded-md ${
+                    `flex items-center space-x-3 px-4 py-3 rounded-lg text-base transition-colors
+                    ${
                       isActive
-                        ? "text-primary bg-primary/10"
-                        : "text-foreground/60"
+                        ? "bg-primary/10 text-primary font-medium"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
                     }`
                   }
+                  onClick={closeMenu}
                 >
-                  <Icon name={link.icon} size={18} />
-                  {link.text}
+                  <Icon name={link.icon} size={20} />
+                  <span>{link.text}</span>
                 </NavLink>
               ))}
-              <div className="flex flex-col gap-2 mt-4">
-                <NavLink to="/profile" onClick={closeMenu} className="mb-2">
-                  <Button
-                    variant="outline"
-                    className="w-full flex items-center gap-2 justify-center"
-                  >
-                    <Icon name="UserCircle" size={18} />
-                    Профиль
-                  </Button>
-                </NavLink>
-                <NavLink to="/login" onClick={closeMenu}>
-                  <Button variant="outline" className="w-full">
-                    Войти
-                  </Button>
-                </NavLink>
-                <NavLink to="/signup" onClick={closeMenu}>
-                  <Button className="w-full">Регистрация</Button>
-                </NavLink>
-              </div>
-            </nav>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
