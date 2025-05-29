@@ -37,6 +37,8 @@ const AnonymousTreeNode = ({
   };
 
   const getNodeLabel = () => {
+    if (node.name) return node.name;
+    if (node.firstName) return node.firstName;
     if (node.label) return node.label;
 
     // Автоматические метки на основе позиции в древе
@@ -81,7 +83,8 @@ const AnonymousTreeNode = ({
         </div>
 
         {/* Индикатор связей */}
-        {(node.spouseIds.length > 0 || node.childrenIds.length > 0) && (
+        {((node.spouseIds?.length || 0) > 0 ||
+          (node.childrenIds?.length || 0) > 0) && (
           <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
             <Icon name="Link" size={10} className="text-white" />
           </div>
@@ -101,10 +104,10 @@ const AnonymousTreeNode = ({
           className="absolute top-20 left-1/2 transform -translate-x-1/2 
           bg-black/80 text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10"
         >
-          <div>Дети: {node.childrenIds.length}</div>
-          <div>Родители: {node.parentIds.length}</div>
-          {node.spouseIds.length > 0 && (
-            <div>Партнёры: {node.spouseIds.length}</div>
+          <div>Дети: {node.childrenIds?.length || 0}</div>
+          <div>Родители: {node.parentIds?.length || 0}</div>
+          {(node.spouseIds?.length || 0) > 0 && (
+            <div>Партнёры: {node.spouseIds?.length}</div>
           )}
         </div>
       )}
