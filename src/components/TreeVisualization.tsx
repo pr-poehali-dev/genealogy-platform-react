@@ -1,4 +1,5 @@
 import { Person } from "@/types/person";
+import AnonymousTreeNode from "@/components/AnonymousTreeNode";
 
 interface TreeNode {
   id: string;
