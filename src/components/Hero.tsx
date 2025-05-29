@@ -51,10 +51,11 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-purple-500/10 to-pink-500/10 rounded-2xl backdrop-blur-sm"></div>
 
               <div className="relative w-full h-full flex items-center justify-center p-8">
-                <div className="family-tree-visual w-full h-full relative bg-gradient-to-br from-white/90 to-white/70 rounded-2xl p-6 shadow-2xl border border-white/20">
-                  <TreeVisualization
-                    showDemo={true}
-                    className="w-full h-full"
+                <div className="w-full h-full relative bg-gradient-to-br from-white/90 to-white/70 rounded-2xl p-6 shadow-2xl border border-white/20">
+                  <img
+                    src="https://cdn.poehali.dev/files/c7d3afd5-53e4-4239-914b-f87fda136b48.png"
+                    alt="Пример семейного древа"
+                    className="w-full h-full object-contain rounded-xl"
                   />
                 </div>
               </div>
